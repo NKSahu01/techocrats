@@ -113,22 +113,18 @@ void aadhar::check()
   textbackground(WHITE);
   textcolor(BLUE);
     fstream ifile,ofile;
-     int i=1;  char cc;
-      while(i==1)
-   { ifile.open("paadhar.dat",ios::in,ios::nocreate);
+    ifile.open("paadhar.dat",ios::in,ios::nocreate);
     ofile.open("aadhar.dat",ios::app);
 
 
 	     cout<<"\nEnter the reference number of already processed AADHAR card: ";
 	     cin>>aref;
 	    ofile<<aref<<endl;
-	       cout<<"\nENTER MORE PROCESSED ID(Y/N):";
-	       cin>>cc;
-	       if(cc!='Y'||cc!='y')
-		 i=0;
-		 ofile.close();
-		ifile.close();      }
+		     cout<<"\nThe card with reference id "<<aref<<" is processed\n";
+		ofile.close();
+		ifile.close();
 		 getch();
+
 }
 
 
@@ -174,9 +170,7 @@ void pan::check()
   textbackground(WHITE);
   textcolor(BLUE);
     fstream ifile,ofile;
-     int i=1;  char cc;
-      while(i==1)
-   { ifile.open("ppan.dat",ios::in,ios::nocreate);
+     ifile.open("ppan.dat",ios::in,ios::nocreate);
     ofile.open("pan.dat",ios::app);
 
 
@@ -184,17 +178,9 @@ void pan::check()
 	     cin>>aref;
 
 	       ofile<<aref<<endl;
-
-
-	       cout<<"\nENTER MORE PROCESSED ID(Y/N):";
-	       cin>>cc;
-	       if(cc!='Y'||cc!='y')
-		 i=0;
-
-
-
+		     cout<<"\nThe card with reference id "<<aref<<" is processed\n";
 ofile.close();
-ifile.close();      } getch();
+ifile.close();       getch();
 }
 
 
@@ -241,25 +227,17 @@ void voterid::check()
   textbackground(WHITE);
   textcolor(BLUE);
     fstream ifile,ofile;
-      int i=1;  char cc;
-      while(i==1)
-   { ifile.open("pvoterid.dat",ios::in,ios::nocreate);
+      ifile.open("pvoterid.dat",ios::in,ios::nocreate);
     ofile.open("pvoterid.dat",ios::app);
 
 
 	     cout<<"\nEnter the reference number of already processed VOTER ID card: ";
 	     cin>>aref;
 
+	     cout<<"\nThe card with reference id "<<aref<<" is processed\n";
 	       ofile<<aref<<endl;
-	      cout<<"\nENTER MORE PROCESSED ID(Y/N):";
-	       cin>>cc;
-	       if(cc!='Y'||cc!='y')
-		 i=0;
-
-
-
 ofile.close();
-ifile.close();      }getch();
+ifile.close();      getch();
 }
 
 
@@ -344,3 +322,4 @@ void main()
 	  }
 	  getch();
 }
+
