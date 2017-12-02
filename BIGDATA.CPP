@@ -395,7 +395,8 @@ while(fin.read((char *)&u,sizeof(u)))
 	       menu();
 	       return;
 	    }        }
-	    cout<<"\n\n\t\t\tLOGGED IN DETAILS ARE INCORRECT\n";
+	    cout<<"\n\n\t\t\tLOGGED IN DETAILS ARE INCORRECT\n";getch();
+	    delay(1500);
 	       exit(0);
 
 }
