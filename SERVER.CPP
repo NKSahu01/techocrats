@@ -1,4 +1,5 @@
-//			server
+//			server                                
+
 #include<fstream.h>
 #include<conio.h>
 #include<iostream.h>
@@ -24,7 +25,11 @@ char state[20];
 int flag1=1;
 
  void user::show()
-	  { cout<<"\n\n\t\tREFERENCE NUMBER: "<<ref;
+	  { clrscr();
+	    textbackground(WHITE);
+	    textcolor(BLUE);
+	    cout<<"\n\n\t\tREFERENCE NUMBER: "<<ref;
+	    cout<<"\nDETAILS ARE\n";
 	    cout<<"\n\tName:";
 	    puts(name);
 	    cout<<"\n\tFather's name:";
@@ -42,7 +47,7 @@ int flag1=1;
 	    cout<<"\n\tMobile No.:";
 	    puts(mobile);
 	    cout<<"\n\tEmail ID:";
-	    puts(email);
+	    puts(email);getch();
 	   }
 
 
@@ -58,7 +63,7 @@ class aadhar:public user
 	   void feedback();
 	   void dis()
 	   {  cout<<"\nREFERNCE NO: "<<aref;
-	      cout<<"\nFEEDBACK: ";puts(feed);
+	      cout<<"\nFEEDBACK: ";puts(feed); getch();
 	   }
 }a;
 
@@ -74,13 +79,13 @@ void user::out()
 	       return;
 	     }
 	}
-     cout<<"RECORD NOT FOUND";
+     cout<<"RECORD NOT FOUND"; getch();
 }
 
 void aadhar::feedback()
 {  ifstream fin ("adfeed.dat",ios::in,ios::nocreate);
    int r;
-   cout<<"Enter the reference number to see the feedback: ";
+   cout<<"\nEnter the reference number to see the feedback: ";
    cin>>r;
    while(fin.read((char *)this,sizeof(aadhar)))
        {
@@ -108,24 +113,22 @@ void aadhar::check()
   textbackground(WHITE);
   textcolor(BLUE);
     fstream ifile,ofile;
-    ifile.open("paadhar.dat",ios::in,ios::nocreate);
+     int i=1;  char cc;
+      while(i==1)
+   { ifile.open("paadhar.dat",ios::in,ios::nocreate);
     ofile.open("aadhar.dat",ios::app);
-       while(ifile.read((char *)&a,sizeof(a)))
-	 {
-	     cout<<"Enter the reference number of already processed aadhar card: ";
+
+
+	     cout<<"\nEnter the reference number of already processed AADHAR card: ";
 	     cin>>aref;
-	     int n=aref;
-	       ofile.write((char *)&a,sizeof(a));
-	       cout<<"\nThe aadhar card with reference number "<<aref<<" is processed\n";
-	       ifile.seekg(0);
-		  if(aref!=n)
-		    {   ifile.write((char *)&a,sizeof(a));
-		    }
-		    getch();
-	       break;
-       }
-ofile.close();
-ifile.close();
+	    ofile<<aref<<endl;
+	       cout<<"\nENTER MORE PROCESSED ID(Y/N):";
+	       cin>>cc;
+	       if(cc!='Y'||cc!='y')
+		 i=0;
+		 ofile.close();
+		ifile.close();      }
+		 getch();
 }
 
 
@@ -143,7 +146,7 @@ class pan:public user
 void pan::feedback()
 {  ifstream fin ("panfeed.dat",ios::in,ios::nocreate);
    int r;
-   cout<<"Enter the reference number to see the feedback: ";
+   cout<<"\nEnter the reference number to see the feedback: ";
    cin>>r;
    while(fin.read((char *)this,sizeof(pan)))
        {
@@ -171,24 +174,27 @@ void pan::check()
   textbackground(WHITE);
   textcolor(BLUE);
     fstream ifile,ofile;
-    ifile.open("ppan.dat",ios::in,ios::nocreate);
+     int i=1;  char cc;
+      while(i==1)
+   { ifile.open("ppan.dat",ios::in,ios::nocreate);
     ofile.open("pan.dat",ios::app);
-       while(ifile.read((char *)&p,sizeof(p)))
-	 {
-	     cout<<"Enter the reference number of already processed PAN card: ";
+
+
+	     cout<<"\nEnter the reference number of already processed PAN card: ";
 	     cin>>aref;
-	     int n=aref;
-	       ofile.write((char *)&p,sizeof(p));
-	       cout<<"\nThe PAN card with reference number "<<aref<<" is processed\n";
-	       ifile.seekg(0);
-		  if(aref!=n)
-		    {   ifile.write((char *)&p,sizeof(p));
-		    }
-		    getch();
-	       break;
-       }
+
+	       ofile<<aref<<endl;
+
+
+	       cout<<"\nENTER MORE PROCESSED ID(Y/N):";
+	       cin>>cc;
+	       if(cc!='Y'||cc!='y')
+		 i=0;
+
+
+
 ofile.close();
-ifile.close();
+ifile.close();      } getch();
 }
 
 
@@ -207,7 +213,7 @@ class voterid :public user
 void voterid::feedback()
 {  ifstream fin ("voterfeed.dat",ios::in,ios::nocreate);
    int r;
-   cout<<"Enter the reference number to see the feedback: ";
+   cout<<"\nEnter the reference number to see the feedback: ";
    cin>>r;
    while(fin.read((char *)this,sizeof(voterid)))
        {
@@ -235,24 +241,25 @@ void voterid::check()
   textbackground(WHITE);
   textcolor(BLUE);
     fstream ifile,ofile;
-    ifile.open("pvoterid.dat",ios::in,ios::nocreate);
-    ofile.open("voterid.dat",ios::app);
-       while(ifile.read((char *)&v,sizeof(v)))
-	 {
-	     cout<<"Enter the reference number of already processed Voter ID card: ";
+      int i=1;  char cc;
+      while(i==1)
+   { ifile.open("pvoterid.dat",ios::in,ios::nocreate);
+    ofile.open("pvoterid.dat",ios::app);
+
+
+	     cout<<"\nEnter the reference number of already processed VOTER ID card: ";
 	     cin>>aref;
-	     int n=aref;
-	       ofile.write((char *)&v,sizeof(v));
-	       cout<<"\nThe aadhar card with reference number "<<aref<<" is processed\n";
-	       ifile.seekg(0);
-		  if(aref!=n)
-		    {   ifile.write((char *)&v,sizeof(v));
-		    }
-		    getch();
-	       break;
-       }
+
+	       ofile<<aref<<endl;
+	      cout<<"\nENTER MORE PROCESSED ID(Y/N):";
+	       cin>>cc;
+	       if(cc!='Y'||cc!='y')
+		 i=0;
+
+
+
 ofile.close();
-ifile.close();
+ifile.close();      }getch();
 }
 
 
@@ -268,7 +275,7 @@ void main()
    textcolor(BLUE);
    cout<<"\n\n\n\t WELCOME TO SERVER AREA";
    cout<<"\n\n\t 1.AADHAR CARD\n\n\t 2.PAN CARD\n\n\t 3.VOTER ID\n\
-	  \nEnter your choice:";
+	  \n\t  Enter your choice:";
    cin>>ch;
     switch(ch)
 	   {
@@ -276,9 +283,10 @@ void main()
 		       textbackground(WHITE);
 			textcolor(BLUE);
 			 cout<<"\n\n\t\t\tAADHAR CARD\n";
-			   cout<<"\n\t\t 1.update the proccessing details\n";
-			   cout<<"\n\t\t 2.see the feedback\n";
-			   cout<<"\n\t\t 3.record details for processing\n";
+			   cout<<"\n\t\t 1.Update the proccessing details\n";
+			   cout<<"\n\t\t 2.See the feedback\n";
+			   cout<<"\n\t\t 3.Record details for processing";
+			   cout<<"\n\t\t  Enter your choice:";
 			   cin>>ch1;
 			      switch(ch1)
 			      {
@@ -295,9 +303,10 @@ void main()
 		       textbackground(WHITE);
 			textcolor(BLUE);
 			 cout<<"\n\n\t\t\tPAN CARD\n";
-			   cout<<"\n\t\t 1.update the proccessing details\n";
-			   cout<<"\n\t\t 2.see the feedback\n";
-			   cout<<"\n\t\t 3.record details for processing\n";
+			   cout<<"\n\t\t 1.Update the proccessing details\n";
+			   cout<<"\n\t\t 2.See the feedback\n";
+			   cout<<"\n\t\t 3.Record details for processing";
+			   cout<<"\n\t\t  Enter ypour choice:";
 			   cin>>ch1;
 			      switch(ch1)
 			      {
@@ -314,9 +323,10 @@ void main()
 		       textbackground(WHITE);
 			textcolor(BLUE);
 			 cout<<"\n\n\t \t\tVOTER ID CARD\n";
-			   cout<<"\n\t\t 1.update the proccessing details\n";
-			   cout<<"\n\t\t 2.see the feedback\n";
-			   cout<<"\n\t\t 3.record details for processing\n";
+			   cout<<"\n\t\t 1.Update the proccessing details\n";
+			   cout<<"\n\t\t 2.See the feedback\n";
+			   cout<<"\n\t\t 3.Record details for processing";
+			   cout<<"\n\t\t  Enter your choice:";
 			   cin>>ch1;
 			      switch(ch1)
 			      {
@@ -332,4 +342,5 @@ void main()
 
 	       default: exit(0);
 	  }
+	  getch();
 }
